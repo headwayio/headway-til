@@ -1,1 +1,8 @@
-p { font-size: 5em; }
+$white: #333;
+$font-size: 1em;
+
+p { font-size: $font-size; }
+
+h1 { font-size: 100px; color: $white; }
+
+h2 { color: $white; }
