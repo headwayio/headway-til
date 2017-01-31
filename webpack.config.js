@@ -4,6 +4,7 @@
 // for this webpack config
 
 const fs = require('fs');
+const path = require('path');
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -39,9 +40,16 @@ module.exports = {
 
       {
         test: /\.scss$/,
-        loader: extractCss.extract('css!sass'),
+        loader: extractCss.extract('css?sourceMap!sass?sourceMap'),
       },
     ]
+  },
+
+  sassLoader: {
+    includePaths: [
+      path.resolve(__dirname, './app/assets/stylesheets'),
+      path.resolve(__dirname, './node_modules/inuitcss')
+    ],
   },
 
   plugins: [
