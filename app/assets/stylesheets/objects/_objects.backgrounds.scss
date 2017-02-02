@@ -19,7 +19,7 @@
     @include inuit-font-size(72px);
 
     @include mq($from: tablet) {
-      top: inuit-rem(-80px);
+      top: inuit-rem(-110px);
       left: inuit-rem(-12px);
       @include inuit-font-size(180px);
     }

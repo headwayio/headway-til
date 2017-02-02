@@ -1,0 +1,14 @@
+nav {
+  position: absolute;
+  right: 0;
+  width: inuit-rem(400px);
+
+  a {
+    display: block;
+    width: 100%;
+    color: $black;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
