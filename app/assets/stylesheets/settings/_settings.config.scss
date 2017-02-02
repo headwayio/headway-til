@@ -22,3 +22,10 @@ $inuit-config: (
 @function inuit-config($key) {
   @return map-get($inuit-config, $key);
 }
+
+$elements: background, page;
+
+@function depth($element) {
+  // Note that index is not zero based
+  @return index($elements, $element);
+}
