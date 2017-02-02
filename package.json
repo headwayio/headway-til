@@ -23,6 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "inuitcss": "^6.0.0-beta.4",
-    "raw-loader": "^0.5.1"
+    "raw-loader": "^0.5.1",
+    "sass-mq": "^3.3.2"
   }
 }
