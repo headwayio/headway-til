@@ -19,3 +19,5 @@ coverage
 lastest.dump
 
 npm-debug.log
+
+.DS_Store

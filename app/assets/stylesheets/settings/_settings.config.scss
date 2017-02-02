@@ -23,6 +23,9 @@ $inuit-config: (
   @return map-get($inuit-config, $key);
 }
 
+// Override default delimiter "/" since it does not play nice with haml
+$inuit-widths-delimiter: 'x';
+
 $elements: background, page;
 
 @function depth($element) {
