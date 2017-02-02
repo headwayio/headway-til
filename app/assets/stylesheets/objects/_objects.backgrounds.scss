@@ -1,0 +1,8 @@
+.o-background {
+  background-repeat: no-repeat;
+  background-position: top center;
+
+  &.o-background--gradient {
+    background: linear-gradient(134.72deg, #5F50ED 0%, #0C176B 100%);
+  }
+}
