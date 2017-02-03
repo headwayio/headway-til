@@ -26,7 +26,7 @@ $inuit-config: (
 // Override default delimiter "/" since it does not play nice with haml
 $inuit-widths-delimiter: 'x';
 
-$elements: background, page;
+$elements: background main;
 
 @function depth($element) {
   // Note that index is not zero based
