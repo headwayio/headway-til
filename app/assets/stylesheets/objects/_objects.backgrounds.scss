@@ -9,7 +9,7 @@
   &.o-background--type {
     position: absolute;
     z-index: depth(background);
-    top: inuit-rem(-30px);
+    top: inuit-rem(-50px);
     left: inuit-rem(-6px);
     opacity: 0.1;
     font-family: $sans;
@@ -22,6 +22,12 @@
       top: inuit-rem(-110px);
       left: inuit-rem(-12px);
       @include inuit-font-size(180px);
+    }
+
+    @include mq($from: desktop) {
+      top: inuit-rem(-130px);
+      left: inuit-rem(-12px);
+      @include inuit-font-size(240px);
     }
   }
 }
