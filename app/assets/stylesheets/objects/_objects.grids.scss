@@ -1,0 +1,17 @@
+.o-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .o-grid__item {
+    max-width: inuit-rem(400px);
+
+    .o-grid--large > & {
+    }
+  }
+
+  &.o-grid--large > .o-grid__item {
+    margin-bottom: $inuit-global-spacing-unit-large;
+  }
+}
+

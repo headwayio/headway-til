@@ -23,3 +23,6 @@ en:
   app:
     name: Today I Learned
     name_html: 'Today<br>I Learned'
+  time:
+    formats:
+      short: '%B %-e, %Y'

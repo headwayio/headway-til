@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :post do
     title 'Web Development'
     body 'Today I learned about web development'
-    developer { FactoryGirl.create(:developer) }
-    channel { FactoryGirl.create(:channel) }
+    developer
+    channel
     published_at Time.now
   end
 
