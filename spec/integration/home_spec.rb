@@ -4,7 +4,7 @@ describe 'Home', type: :feature do
   describe 'visitor' do
     it 'displays posts' do
       channel1 = create(:channel, name: 'Text Editor')
-      channel2 = create(:channel, name: 'Sketch')
+      channel2 = create(:channel, name: 'Sketch', include_icon: true)
 
       post1 = create(:post, title: 'Vim or nothing')
       post2 = create(:post, title: 'Colors and shapes')

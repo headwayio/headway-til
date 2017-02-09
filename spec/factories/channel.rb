@@ -1,11 +1,16 @@
 FactoryGirl.define do
   factory :channel do
-    name 'phantomjs'
-    twitter_hashtag 'phantomjs'
-  end
+    sequence(:name) { |n| "Channel #{n}" }
+    sequence(:twitter_hashtag) { |n| "twitter-hashtag-#{n}" }
 
-  factory :ruby_channel, class: Channel do
-    name 'ruby'
-    twitter_hashtag 'ruby'
+    transient do
+      include_icon false
+    end
+
+    before(:create) do |channel, evaluator|
+      if evaluator.include_icon
+        channel.icon = Rails.root.join('spec/factories/files/sketch-icon.png').open
+      end
+    end
   end
 end
