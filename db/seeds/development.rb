@@ -15,38 +15,108 @@ channels = [
   { name: 'rails', twitter_hashtag: 'rails' },
   { name: 'react', twitter_hashtag: 'react' },
   { name: 'ruby', twitter_hashtag: 'ruby' },
-  { name: 'sketch', twitter_hashtag: 'sketch' },
+  { name: 'sketch', twitter_hashtag: 'sketch', icon: 'sketch-icon.png' },
   { name: 'sql', twitter_hashtag: 'sql' },
   { name: 'testing', twitter_hashtag: 'testing' },
   { name: 'vim', twitter_hashtag: 'vim' },
   { name: 'workflow', twitter_hashtag: 'workflow' },
 ]
 
-print "Creating #{channels.length} channels"
-channels.each do |channel|
-  Channel.find_or_create_by!(name: channel[:name], twitter_hashtag: channel[:twitter_hashtag])
+puts "Creating #{channels.length} channels"
+channels.each do |row|
+  Channel.find_or_create_by!(name: row[:name]) do |channel|
+    channel.twitter_hashtag = row[:twitter_hashtag]
+
+    if row[:icon].present?
+      Rails.root.join('spec/factories/files', row[:icon]).open do |f|
+        channel.icon = f
+      end
+    end
+  end
 end
 puts " ...done."
 
-print "Creating developers"
-5.times do
-  username = Phil.name.downcase.delete(' ')
-  Developer.create!(username: username, email: "#{username}@headway.io")
+developers = [
+  { username: 'andrew', email: 'andrew@headway.io', avatar: 'andrew-verboncouer.png' },
+  { username: 'jon', email: 'jon@headway.io', avatar: 'jon-kinney.png' },
+  { username: 'eric', email: 'eric@headway.io', avatar: 'eric-verboncouer.png' },
+  { username: 'tommy', email: 'tommy@headway.io', avatar: 'tommy-byrne.png' },
+  { username: 'noah', email: 'noah@headway.io', avatar: 'noah-settersten.png' },
+  { username: 'tim', email: 'tim@headway.io', avatar: 'tim-gremore.png' }
+]
+
+puts 'Creating developers'
+developers.each do |row|
+  Developer.find_or_create_by!(username: row[:username]) do |developer|
+    developer.email = row[:email]
+
+    Rails.root.join('spec/factories/files', row[:avatar]).open do |f|
+      developer.avatar = f
+    end
+  end
 end
 puts " ...done."
 
-print "Creating posts"
-40.times do
-  likes = rand(1..20)
+posts = [
+  {
+    title: 'Breakup Lines with SplitJoin',
+    developer: Developer.find_by(username: 'tim'),
+    body: Phil.words(100).capitalize,
+    likes: rand(1..20),
+    created_at: rand(30).days.ago,
+    published_at: rand(30).days.ago
+  },
+  {
+    title: 'Components in Components',
+    developer: Developer.find_by(username: 'noah'),
+    body: Phil.words(100).capitalize,
+    likes: rand(1..20),
+    created_at: rand(30).days.ago,
+    published_at: rand(30).days.ago
+  },
+  {
+    title: 'Importing accurate data through JSON',
+    developer: Developer.find_by(username: 'andrew'),
+    body: Phil.words(100).capitalize,
+    likes: rand(1..20),
+    created_at: rand(30).days.ago,
+    published_at: rand(30).days.ago
+  },
+  {
+    title: 'Remapping key shortcuts',
+    developer: Developer.find_by(username: 'jon'),
+    body: Phil.words(100).capitalize,
+    likes: rand(1..20),
+    created_at: rand(30).days.ago,
+    published_at: rand(30).days.ago
+  },
+  {
+    title: 'Inheriting link hrefs in javascript',
+    developer: Developer.find_by(username: 'noah'),
+    body: Phil.words(100).capitalize,
+    likes: rand(1..20),
+    created_at: rand(30).days.ago,
+    published_at: rand(30).days.ago
+  },
+  {
+    title: 'Request consolidation',
+    developer: Developer.find_by(username: 'tommy'),
+    body: Phil.words(100).capitalize,
+    likes: rand(1..20),
+    created_at: rand(30).days.ago,
+    published_at: rand(30).days.ago
+  }
+]
 
-  post = Post.create!(body: Phil.words(100).capitalize,
-                      developer: Developer.all.sample,
-                      title: Phil.words(2).capitalize,
-                      likes: likes,
-                      max_likes: likes,
-                      created_at: Date.today - rand(30).days,
-                      published_at: [(Date.today - rand(30).days), nil].sample)
-
-  post.channels = Channel.all.sample((1..3).to_a.sample)
+puts "Creating posts"
+posts.each do |post|
+  Post.find_or_create_by!(title: post[:title]) do |p|
+    p.developer    = post[:developer]
+    p.body         = post[:body]
+    p.likes        = post[:likes]
+    p.created_at   = post[:created_at]
+    p.published_at = post[:published_at]
+    p.channels     = Channel.all.sample(rand(3))
+  end
 end
 puts " ...done."

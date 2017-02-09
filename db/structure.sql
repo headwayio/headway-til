@@ -138,7 +138,8 @@ CREATE TABLE developers (
     twitter_handle character varying,
     admin boolean DEFAULT false NOT NULL,
     editor character varying DEFAULT 'Text Field'::character varying,
-    slack_name character varying
+    slack_name character varying,
+    avatar character varying
 );
 
 
@@ -438,6 +439,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20160701161129'),
 ('20160708201736'),
 ('20170204204251'),
-('20170209031639');
+('20170209031639'),
+('20170209125924');
 
 
