@@ -1,6 +1,7 @@
 class Channel < ApplicationRecord
+  has_and_belongs_to_many :posts
+
   validates_presence_of :name
-  has_many :posts
 
   def to_param
     name

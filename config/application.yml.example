@@ -1,11 +1,11 @@
 development: &default
-  default_twitter_handle: 'hashrocket'
+  default_twitter_handle: 'headwayio'
   google_client_id:
   google_client_secret:
   heroku_production_app_name:
   host: 'www.example.com'
   protocol: 'http://'
-  permitted_domains: 'hashrocket.com|hshrckt.com|example.com'
+  permitted_domains: 'headway.io|example.com'
   permitted_emails: 'johnsmith@whitelisted-guest.com'
   slack_post_endpoint:
   twitter_access_token:

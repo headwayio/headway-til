@@ -1,6 +1,6 @@
-class CreateTag < ActiveRecord::Migration
+class CreateChannels < ActiveRecord::Migration
   def change
-    create_table :tags do |t|
+    create_table :channels do |t|
       t.text :name, null: false
 
       t.timestamps

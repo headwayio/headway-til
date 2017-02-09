@@ -3,8 +3,7 @@ FactoryGirl.define do
     title 'Web Development'
     body 'Today I learned about web development'
     developer
-    channel
-    published_at Time.now
+    published_at Time.current
   end
 
   trait :for_today do

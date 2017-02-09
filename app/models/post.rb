@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  validates :body, :channel_id, :developer, presence: true
+  validates :body, :developer, presence: true
   validates :title, presence: true, length: { maximum: 50 }
   validates :likes, numericality: { greater_than_or_equal_to: 0 }
   validates :slug, uniqueness: true
@@ -10,8 +10,9 @@ class Post < ApplicationRecord
   delegate :username, to: :developer, prefix: true
   delegate :slack_display_name, to: :developer, prefix: true
 
+  has_and_belongs_to_many :channels
+
   belongs_to :developer
-  belongs_to :channel
 
   before_create :generate_slug
   after_save :notify_slack_on_publication, if: :publishing?
