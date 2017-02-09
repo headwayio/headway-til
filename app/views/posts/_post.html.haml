@@ -2,7 +2,9 @@
   .o-block.o-block--left.o-block--small
     .o-block__img
       .o-flag
-        .o-flag__img= image_tag(post.developer.avatar.thumb.url, size: '50x50')
+        .o-flag__img
+          - if post.developer_avatar.present?
+            = image_tag(post.developer_avatar.thumb.url, size: '50x50')
         .o-flag__body
           %p.u-margin-bottom-none= link_to post.developer_username, post.developer, class: 'u-copy-uppercase u-copy-bold'
           %p.u-copy-small.u-margin-bottom-none= link_to l(post.display_date, format: :short), post

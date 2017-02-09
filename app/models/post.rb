@@ -5,9 +5,12 @@ class Post < ApplicationRecord
   validates :slug, uniqueness: true
   validate :body_size, if: -> { body.present? }
 
-  delegate :twitter_handle, to: :developer, prefix: true
-  delegate :username, to: :developer, prefix: true
-  delegate :slack_display_name, to: :developer, prefix: true
+  delegate :twitter_handle,
+           :avatar,
+           :username,
+           :slack_display_name,
+           to: :developer,
+           prefix: true
 
   has_and_belongs_to_many :channels
 
