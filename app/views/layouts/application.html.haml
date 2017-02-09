@@ -2,7 +2,7 @@
 %html(lang="en-US")
   %head
     %title= [content_for(:page_title), SITE_NAME].compact.join(' - ').html_safe
-    %link(href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900" rel="stylesheet")
+    %link(href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600|Work+Sans:300,400,700" rel="stylesheet")
     = stylesheet_link_tag    fingerprinted_asset('application'), media: 'all'
     = javascript_include_tag fingerprinted_asset('application')
     = csrf_meta_tags

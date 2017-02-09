@@ -4,13 +4,11 @@
       .o-flag
         .o-flag__img= image_tag('noah-settersten.png', size: '50x50')
         .o-flag__body
-          %p
-            = link_to post.developer_username, post.developer, class: 'u-copy-uppercase u-copy-bold'
-            %br
-            = link_to l(post.display_date, format: :short), post
+          %p.u-margin-bottom-none= link_to post.developer_username, post.developer, class: 'u-copy-uppercase u-copy-bold'
+          %p.u-copy-small.u-margin-bottom-none= link_to l(post.display_date, format: :short), post
     .o-block__body
       %section
-        %h3.h1.u-margin-bottom= link_to post.title, post
+        %h3.u-h1.u-copy-medium.u-margin-bottom= link_to post.title, post
       %footer
         %ul.o-pack
           %li.o-pack__item

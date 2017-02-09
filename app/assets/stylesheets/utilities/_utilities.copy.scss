@@ -3,5 +3,18 @@
 }
 
 .u-copy-body {
-  font-weight: bold;
+  font-weight: $sans-body-bold;
+}
+
+.u-copy-tiny {
+  @include inuit-font-size(10px);
+}
+
+.u-copy-small {
+  font-weight: 300;
+  @include inuit-font-size(11px);
+}
+
+.u-copy-medium {
+  font-weight: $sans-body-medium;
 }

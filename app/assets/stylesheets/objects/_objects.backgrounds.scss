@@ -12,8 +12,8 @@
     top: inuit-rem(-50px);
     left: inuit-rem(-6px);
     opacity: 0.1;
-    font-family: $sans;
-    font-weight: $bold;
+    font-family: $sans-heading;
+    font-weight: $sans-heading-medium;
     color: $black;
     text-transform: uppercase;
     @include inuit-font-size(72px);

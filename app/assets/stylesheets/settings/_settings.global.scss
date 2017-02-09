@@ -12,8 +12,18 @@ $global-transition: (1/3) + s !default;
 $max-width: 1440px;
 
 // Type-related styles
-$sans: "Source Sans Pro";
-$bold: 900;
+$sans-heading: "Source Sans Pro";
+$sans-body: "Work Sans";
+
+// Note that each weight is specified in our application layout file's call to
+// Google Fonts - changing those requested weights will need an accompanying
+// change here.
+$sans-heading-light: 300;
+$sans-heading-medium: 600;
+
+$sans-body-light: 300;
+$sans-body-medium: 400;
+$sans-body-bold: 700;
 
 // Colors
 $black: #000000;
