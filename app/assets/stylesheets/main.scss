@@ -90,6 +90,8 @@
 @import "tools/tools.hidden";
 @import "node_modules/sass-mq/mq";
 
+@import "tools/tools.aliases";
+
 
 
 
@@ -145,7 +147,7 @@
 // COMPONENTS
 //
 // Build and include your project’s UI Compoments here.
-@import "components/example.components.buttons";
+@import "components/components.buttons";
 
 
 

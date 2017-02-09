@@ -15,8 +15,9 @@ describe 'Home', type: :feature do
       visit '/'
 
       expect(page).to have_content('Vim or nothing')
-      expect(page).to have_content('text editor')
-      expect(page).to have_content('sketch')
+      expect(page).to have_content('Text Editor')
+      expect(page).to have_content('Colors and shapes')
+      expect(page).to have_content('Sketch')
     end
   end
 end

@@ -5,7 +5,6 @@ class Post < ApplicationRecord
   validates :slug, uniqueness: true
   validate :body_size, if: -> { body.present? }
 
-  delegate :name, to: :channel, prefix: true
   delegate :twitter_handle, to: :developer, prefix: true
   delegate :username, to: :developer, prefix: true
   delegate :slack_display_name, to: :developer, prefix: true
@@ -124,7 +123,7 @@ class Post < ApplicationRecord
         "setweight(to_tsvector('english', #{column}), '#{rank}')"
       end.join(' || ')
 
-      joins(:developer, :channel)
+      joins(:developer, :channels)
       .joins("""
         join lateral (
           select
