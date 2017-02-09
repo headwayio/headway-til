@@ -6,6 +6,14 @@
     background: linear-gradient(134.72deg, #5F50ED 0%, #0C176B 100%);
   }
 
+  &.o-background--paper {
+    padding: $unit;
+    background-color: $white;
+    border-radius: $global-radius;
+    color: $black;
+    box-shadow: 0 11px 24px 0 rgba(0,0,0,0.5);
+  }
+
   &.o-background--type {
     position: absolute;
     z-index: depth(background);

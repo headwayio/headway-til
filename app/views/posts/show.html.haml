@@ -3,15 +3,9 @@
 - content_for :canonical do
   %link{rel: 'canonical', href: post_url(@post)}
 
-- content_for :post_nav do
-  - if @post.published? && multiple_posts?
-    %nav.pagination
-      - unless oldest_post? @post
-        = link_to previous_post(@post), class: "pagination_newer" do
-          previous TIL
-      - unless newest_post? @post
-        = link_to next_post(@post), class: "pagination_older" do
-          next TIL
-
-%section#post_show
-  = render @post
+%section.o-layout.o-layout--center
+  .o-layout__item.u-1x3
+    = render @post
+  .o-layout__item.u-2x3
+    .o-background.o-background--paper
+      = @post.body
