@@ -61,7 +61,7 @@ content = <<str
 #{Phil.words(100).capitalize}
 
 ```ruby
-'Let’s make Headway!'.split(/\s+/).join(tag(:br))
+'Let’s make Headway!'.split(/\\s+/).join(tag(:br))
 ```
 
 #{Phil.words(50).capitalize}
