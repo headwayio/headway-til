@@ -2,8 +2,8 @@ nav {
 
   &.nav-masthead {
     position: absolute;
-    top: inuit-rem(12px);
-    right: inuit-rem(110px);
+    top: inuit-rem(32px);
+    right: 0px;
     width: inuit-rem(500px);
 
     @include mq($until: tablet) {

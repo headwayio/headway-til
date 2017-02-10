@@ -3,6 +3,7 @@
   background-position: top center;
 
   &.o-background--gradient {
+    background-size: cover;
     background: linear-gradient(134.72deg, #5F50ED 0%, #0C176B 100%);
   }
 
@@ -15,7 +16,7 @@
   }
 
   &.o-background--type {
-    position: absolute;
+    position: fixed;
     z-index: depth(background);
     top: inuit-rem(-50px);
     left: inuit-rem(-6px);

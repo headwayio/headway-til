@@ -9,9 +9,9 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1")
     = favicon_link_tag 'favicon.png'
   %body.o-background.o-background--gradient
+    %h1.o-background.o-background--type= t('app.name_html')
     .o-wrapper
-      %h1.o-background.o-background--type= t('app.name_html')
-      .o-wrapper--main.o-layout.o-layout--center.u-margin-top
+      .o-wrapper--main.o-layout.o-layout--center.u-padding-top
         .o-layout__item.u-1x1.u-margin-bottom-large
           %p.u-text-center= image_tag 'headway-logo-mark-white.svg', size: '50x50'
           %nav.nav-masthead
