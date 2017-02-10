@@ -57,11 +57,21 @@ developers.each do |row|
 end
 puts " ...done."
 
+content = <<str
+#{Phil.words(100).capitalize}
+
+```ruby
+'Let’s make Headway!'.split(/\s+/).join(tag(:br))
+```
+
+#{Phil.words(50).capitalize}
+str
+
 posts = [
   {
     title: 'Breakup Lines with SplitJoin',
     developer: Developer.find_by(username: 'tim'),
-    body: Phil.words(100).capitalize,
+    body: content,
     likes: rand(1..20),
     created_at: rand(30).days.ago,
     published_at: rand(30).days.ago
