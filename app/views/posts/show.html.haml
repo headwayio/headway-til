@@ -8,4 +8,4 @@
     = render @post
   .o-layout__item.u-2x3
     .o-background.o-background--paper
-      = @post.body
+      = markdown_render(@post.body)
