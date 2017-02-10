@@ -13,7 +13,7 @@
     .o-wrapper
       .o-wrapper--main.o-layout.o-layout--center.u-padding-top
         .o-layout__item.u-1x1.u-margin-bottom-large
-          %p.u-text-center= image_tag 'headway-logo-mark-white.svg', size: '50x50'
+          .u-text-center= link_to(image_tag('headway-logo-mark-white.svg', size: '50x50'), root_path)
           %nav.nav-masthead
             .o-pack
               .o-pack__item= link_to('All', '#0')
