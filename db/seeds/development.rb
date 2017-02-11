@@ -73,7 +73,7 @@ str
 posts = [
   {
     title: 'Breakup Lines with SplitJoin',
-    developer: Developer.find_by(username: 'tim'),
+    developer: Developer.find_by(username: 'eric'),
     body: content,
     likes: rand(1..20),
     created_at: rand(30).days.ago,
@@ -105,7 +105,7 @@ posts = [
   },
   {
     title: 'Inheriting link hrefs in javascript',
-    developer: Developer.find_by(username: 'noah'),
+    developer: Developer.find_by(username: 'eric'),
     body: Phil.words(100).capitalize,
     likes: rand(1..20),
     created_at: rand(30).days.ago,

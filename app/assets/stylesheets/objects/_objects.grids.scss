@@ -1,13 +1,13 @@
 .o-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 
+  /**
+   * Setting the width
+   */
   .o-grid__item {
-    max-width: inuit-rem(400px);
-
-    .o-grid--large > & {
-    }
+    width: inuit-rem(floor($max-width / 3) - ($unit * 2));
   }
 
   &.o-grid--large > .o-grid__item {
