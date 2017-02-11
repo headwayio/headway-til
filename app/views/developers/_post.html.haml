@@ -1,0 +1,4 @@
+%article.o-box
+  %p.u-margin-bottom-none= link_to l(post.display_date, format: :short), post
+  %h2.u-h1.u-margin-bottom-tiny= link_to post.title, post
+  %ul.o-list-inline= render post.channels
