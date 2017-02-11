@@ -35,4 +35,8 @@ class Developer < ApplicationRecord
   def slack_display_name
     slack_name || username
   end
+
+  def full_name
+    [first_name, last_name].compact.join(' ')
+  end
 end

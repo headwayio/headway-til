@@ -37,18 +37,21 @@ end
 puts " ...done."
 
 developers = [
-  { username: 'andrew', email: 'andrew@headway.io', avatar: 'andrew-verboncouer.png' },
-  { username: 'jon', email: 'jon@headway.io', avatar: 'jon-kinney.png' },
-  { username: 'eric', email: 'eric@headway.io', avatar: 'eric-verboncouer.png' },
-  { username: 'tommy', email: 'tommy@headway.io', avatar: 'tommy-byrne.png' },
-  { username: 'noah', email: 'noah@headway.io', avatar: 'noah-settersten.png' },
-  { username: 'tim', email: 'tim@headway.io', avatar: 'tim-gremore.png' }
+  { username: 'andrew', email: 'andrew@headway.io', avatar: 'andrew-verboncouer.png' , first_name: 'Andrew', last_name: 'Verboncouer', title: 'Partner & Design Lead' },
+  { username: 'jon', email: 'jon@headway.io', avatar: 'jon-kinney.png', first_name: 'Jon', last_name: 'Kinney', title: 'Partner & Development Lead' },
+  { username: 'eric', email: 'eric@headway.io', avatar: 'eric-verboncouer.png', first_name: 'Eric', last_name: 'Verboncouer', title: 'Partner & Developer' },
+  { username: 'tommy', email: 'tommy@headway.io', avatar: 'tommy-byrne.png', first_name: 'Tommy', last_name: 'Byrne', title: 'Developer' },
+  { username: 'noah', email: 'noah@headway.io', avatar: 'noah-settersten.png', first_name: 'Noah', last_name: 'Setterston', title: 'Developer' },
+  { username: 'tim', email: 'tim@headway.io', avatar: 'tim-gremore.png', first_name: 'Tim', last_name: 'Gremore', title: 'Developer' }
 ]
 
 puts 'Creating developers'
 developers.each do |row|
   Developer.find_or_create_by!(username: row[:username]) do |developer|
-    developer.email = row[:email]
+    developer.first_name = row[:first_name]
+    developer.last_name  = row[:last_name]
+    developer.email      = row[:email]
+    developer.title      = row[:title]
 
     Rails.root.join('spec/factories/files', row[:avatar]).open do |f|
       developer.avatar = f

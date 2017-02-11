@@ -139,7 +139,10 @@ CREATE TABLE developers (
     admin boolean DEFAULT false NOT NULL,
     editor character varying DEFAULT 'Text Field'::character varying,
     slack_name character varying,
-    avatar character varying
+    avatar character varying,
+    first_name character varying,
+    last_name character varying,
+    title character varying
 );
 
 
@@ -440,6 +443,8 @@ INSERT INTO schema_migrations (version) VALUES
 ('20160708201736'),
 ('20170204204251'),
 ('20170209031639'),
-('20170209125924');
+('20170209125924'),
+('20170211124000'),
+('20170211124750');
 
 
