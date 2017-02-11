@@ -16,8 +16,8 @@
           .u-text-center= link_to(image_tag('headway-logo-mark-white.svg', size: '50x50'), root_path)
           %nav.nav-masthead
             .o-pack
-              .o-pack__item= link_to('All', '#0')
-              .o-pack__item= link_to('Development', '#0')
-              .o-pack__item= link_to('Design', '#0')
+              .o-pack__item= link_to('All', root_path)
+              .o-pack__item= link_to('Development', channel_path('development'))
+              .o-pack__item= link_to('Design', channel_path('design'))
               .o-pack__item= link_to(image_tag('twitter-logo.svg', size: '30x25'), '#0')
         .o-layout__item.u-1x1.u-margin-top-huge= yield

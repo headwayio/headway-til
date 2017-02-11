@@ -1,6 +1,6 @@
 - content_for :page_title, "Posts about #{channel.name}"
-
-%section#tag
-  %header.page_head
-    %h1 #{pluralize channel.posts_count, "post"} about ##{channel.name}
-= render posts
+%section.o-layout.o-layout--center
+  .o-layout__item.u-1x3
+    = render 'channels/channel_detail', channel: channel
+  .o-layout__item.u-2x3
+    = render partial: 'posts/post_simple', collection: channel.posts, as: :post
