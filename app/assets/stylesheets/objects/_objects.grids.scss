@@ -3,15 +3,13 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
-  /**
-   * Setting the width
-   */
   .o-grid__item {
-    width: inuit-rem(floor($max-width / 3) - ($unit * 2));
+    width: 33%;
+    padding: 0 inuit-rem($unit-small);
   }
 
   &.o-grid--large > .o-grid__item {
-    margin-bottom: $inuit-global-spacing-unit-large;
+    margin-bottom: $unit-large;
   }
 }
 
