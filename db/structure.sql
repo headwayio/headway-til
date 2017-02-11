@@ -92,7 +92,8 @@ CREATE TABLE channels (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     twitter_hashtag character varying,
-    icon character varying
+    icon character varying,
+    parent_id integer
 );
 
 
@@ -374,6 +375,13 @@ CREATE INDEX index_authem_sessions_subject ON authem_sessions USING btree (expir
 
 
 --
+-- Name: index_channels_on_parent_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_channels_on_parent_id ON channels USING btree (parent_id);
+
+
+--
 -- Name: index_channels_posts_on_channel_id_and_post_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -445,6 +453,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170209031639'),
 ('20170209125924'),
 ('20170211124000'),
-('20170211124750');
+('20170211124750'),
+('20170211190651');
 
 
