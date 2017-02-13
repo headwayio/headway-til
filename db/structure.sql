@@ -93,7 +93,9 @@ CREATE TABLE channels (
     updated_at timestamp without time zone NOT NULL,
     twitter_hashtag character varying,
     icon character varying,
-    parent_id integer
+    parent_id integer,
+    development boolean,
+    design boolean
 );
 
 
@@ -454,6 +456,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170209125924'),
 ('20170211124000'),
 ('20170211124750'),
-('20170211190651');
+('20170211190651'),
+('20170213234544');
 
 

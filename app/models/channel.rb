@@ -1,19 +1,12 @@
 class Channel < ApplicationRecord
-  belongs_to :parent, class_name: 'Channel', inverse_of: :channels
-
-  has_many :channels,
-           foreign_key: :parent_id,
-           dependent: :nullify,
-           inverse_of: :parent
-  has_many :child_posts,
-           through: :channels,
-           source: :posts
-
   has_and_belongs_to_many :posts
 
   mount_uploader :icon, IconUploader
 
   validates_presence_of :name
+
+  scope :development, -> { where(development: true) }
+  scope :design,      -> { where(design: true) }
 
   def to_param
     name
