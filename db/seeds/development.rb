@@ -2,30 +2,32 @@
 # rake db:restore_production_dump
 
 channels = [
-  { name: 'command-line', twitter_hashtag: 'commandline' },
-  { name: 'computer-science', twitter_hashtag: 'computerscience' },
   { name: 'design', twitter_hashtag: 'design' },
-  { name: 'devops', twitter_hashtag: 'devops' },
-  { name: 'elixir', twitter_hashtag: 'elixir' },
-  { name: 'emberjs', twitter_hashtag: 'emberjs' },
-  { name: 'git', twitter_hashtag: 'git' },
-  { name: 'html-css', twitter_hashtag: 'htmlcss' },
-  { name: 'javascript', twitter_hashtag: 'javascript' },
-  { name: 'mobile', twitter_hashtag: 'mobile' },
-  { name: 'rails', twitter_hashtag: 'rails' },
-  { name: 'react', twitter_hashtag: 'react' },
-  { name: 'ruby', twitter_hashtag: 'ruby' },
-  { name: 'sketch', twitter_hashtag: 'sketch', icon: 'sketch-icon.png' },
-  { name: 'sql', twitter_hashtag: 'sql' },
-  { name: 'testing', twitter_hashtag: 'testing' },
-  { name: 'vim', twitter_hashtag: 'vim' },
-  { name: 'workflow', twitter_hashtag: 'workflow' },
+  { name: 'development', twitter_hashtag: 'development' },
+  { parent: 'development', name: 'command-line', twitter_hashtag: 'commandline' },
+  { parent: 'development', name: 'computer-science', twitter_hashtag: 'computerscience' },
+  { parent: 'development', name: 'devops', twitter_hashtag: 'devops' },
+  { parent: 'development', name: 'elixir', twitter_hashtag: 'elixir' },
+  { parent: 'development', name: 'emberjs', twitter_hashtag: 'emberjs' },
+  { parent: 'development', name: 'git', twitter_hashtag: 'git' },
+  { parent: 'design', name: 'html-css', twitter_hashtag: 'htmlcss' },
+  { parent: 'development', name: 'javascript', twitter_hashtag: 'javascript' },
+  { parent: 'design', name: 'mobile', twitter_hashtag: 'mobile' },
+  { parent: 'development', name: 'rails', twitter_hashtag: 'rails' },
+  { parent: 'development', name: 'react', twitter_hashtag: 'react' },
+  { parent: 'development', name: 'ruby', twitter_hashtag: 'ruby' },
+  { parent: 'design', name: 'sketch', twitter_hashtag: 'sketch', icon: 'sketch-icon.png' },
+  { parent: 'development', name: 'sql', twitter_hashtag: 'sql' },
+  { parent: 'development', name: 'testing', twitter_hashtag: 'testing' },
+  { parent: 'development', name: 'vim', twitter_hashtag: 'vim' },
+  { parent: 'development', name: 'workflow', twitter_hashtag: 'workflow' },
 ]
 
 puts "Creating #{channels.length} channels"
 channels.each do |row|
   Channel.find_or_create_by!(name: row[:name]) do |channel|
     channel.twitter_hashtag = row[:twitter_hashtag]
+    channel.parent          = Channel.find_by(name: row[:parent])
 
     if row[:icon].present?
       Rails.root.join('spec/factories/files', row[:icon]).open do |f|
@@ -137,7 +139,7 @@ posts.each do |post|
     p.likes        = post[:likes]
     p.created_at   = post[:created_at]
     p.published_at = post[:published_at]
-    p.channels     = Channel.all.sample(rand(3))
+    p.channels     = Channel.where.not(parent_id: nil).sample(rand(3))
   end
 end
 puts " ...done."
