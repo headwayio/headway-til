@@ -21,4 +21,6 @@ lastest.dump
 
 npm-debug.log
 
+.byebug_history
+
 .DS_Store
