@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   get 'wp-login.php' => redirect('/')
   get 'authors/wp-login.php' => redirect('/')
 
+  get ':category',
+      to: 'categories#index',
+      as: :category,
+      defaults: { category: 'all' }
+
   resource :profile, controller: 'developers', only: %i(update edit)
   resources :developers, path: '/authors', only: 'show'
 

@@ -1,0 +1,7 @@
+- content_for :page_title, "#{category} Posts"
+%section.o-layout.o-layout--center
+  .o-layout__item.u-1x3
+    %h1.u-margin-top= category
+  %div.o-flag__body
+  .o-layout__item.u-2x3
+    = render partial: 'posts/post_simple', collection: posts, as: :post
