@@ -1,0 +1,4 @@
+en:
+  categories:
+    show:
+      empty_list_html: 'No <span class="u-h1 u-margin-left-small u-margin-right-small">%{category}</span> posts were returned'
