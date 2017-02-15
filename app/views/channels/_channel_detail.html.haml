@@ -1,0 +1,6 @@
+%div.o-flag
+  %div.o-flag__img.u-text-center
+    - if channel.icon.present?
+      = image_tag(channel.icon.url)
+  %div.o-flag__body
+    %h1.u-margin-top= channel.name.capitalize

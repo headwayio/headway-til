@@ -1,0 +1,17 @@
+.c-btn {
+  padding: $unit-tiny $unit-small;
+  background-color: $shade-color;
+
+  &.c-btn--rounded {
+    border-radius: $global-radius;
+  }
+
+  &.c-btn--pill {
+    border-radius: 500px;
+  }
+
+  &.c-btn--small {
+    font-weight: 100;
+    @include inuit-font-size(11px);
+  }
+}

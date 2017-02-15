@@ -9,6 +9,7 @@ module HrTil
     config.active_record.schema_format = :sql
     config.autoload_paths << Rails.root.join('lib')
     config.time_zone = 'Eastern Time (US & Canada)'
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'views', '**', '*.{rb,yml}')]
 
 
     config.middleware.insert_before 0, Rack::Cors do

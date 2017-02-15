@@ -83,6 +83,10 @@ GEM
       rack (>= 1.4)
       rack-proxy (= 0.6.0)
       selenium-webdriver (~> 2.0)
+    carrierwave (1.0.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.1)
@@ -178,6 +182,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.6.0)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
@@ -345,16 +350,18 @@ DEPENDENCIES
   brakeman
   bullet
   capybara-webmock
+  carrierwave (~> 1.0)
   cucumber-rails
   database_cleaner
   dynamic_form
-  factory_girl_rails
+  factory_girl_rails (~> 4.0)
   figaro
   haml-rails
   httparty
   jbuilder (~> 2.0)
   kaminari
   launchy
+  mini_magick
   omniauth-google-oauth2
   pg
   phil

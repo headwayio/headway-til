@@ -1,0 +1,9 @@
+.o-wrapper {
+  position: relative;
+  max-width: inuit-rem($max-width);
+
+  > .o-wrapper--main {
+    position: relative;
+    z-index: depth(main);
+  }
+}

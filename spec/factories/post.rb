@@ -2,9 +2,8 @@ FactoryGirl.define do
   factory :post do
     title 'Web Development'
     body 'Today I learned about web development'
-    developer { FactoryGirl.create(:developer) }
-    channel { FactoryGirl.create(:channel) }
-    published_at Time.now
+    developer
+    published_at Time.current
   end
 
   trait :for_today do

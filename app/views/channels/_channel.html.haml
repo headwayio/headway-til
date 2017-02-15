@@ -1,0 +1,5 @@
+%li.o-list-inline__item
+  = link_to(channel, class: 'c-btn c-btn--small c-btn--pill u-copy-uppercase') do
+    - if channel.icon.present?
+      = image_tag channel.icon.tiny.url
+    = channel.name

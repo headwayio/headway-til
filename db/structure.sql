@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.5
+-- Dumped from database version 9.6.1
 -- Dumped by pg_dump version 9.6.1
 
 SET statement_timeout = 0;
@@ -53,8 +53,8 @@ CREATE TABLE ar_internal_metadata (
 CREATE TABLE authem_sessions (
     id integer NOT NULL,
     role character varying NOT NULL,
-    subject_id integer NOT NULL,
     subject_type character varying NOT NULL,
+    subject_id integer NOT NULL,
     token character varying(60) NOT NULL,
     expires_at timestamp without time zone NOT NULL,
     ttl integer NOT NULL,
@@ -91,8 +91,11 @@ CREATE TABLE channels (
     name text NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    twitter_hashtag character varying(20) NOT NULL,
-    CONSTRAINT twitter_hashtag_alphanumeric_constraint CHECK (((twitter_hashtag)::text ~ '^[\w\d]+$'::text))
+    twitter_hashtag character varying,
+    icon character varying,
+    parent_id integer,
+    development boolean,
+    design boolean
 );
 
 
@@ -116,6 +119,16 @@ ALTER SEQUENCE channels_id_seq OWNED BY channels.id;
 
 
 --
+-- Name: channels_posts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE channels_posts (
+    channel_id integer NOT NULL,
+    post_id integer NOT NULL
+);
+
+
+--
 -- Name: developers; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -128,7 +141,11 @@ CREATE TABLE developers (
     twitter_handle character varying,
     admin boolean DEFAULT false NOT NULL,
     editor character varying DEFAULT 'Text Field'::character varying,
-    slack_name character varying
+    slack_name character varying,
+    avatar character varying,
+    first_name character varying,
+    last_name character varying,
+    title character varying
 );
 
 
@@ -142,7 +159,7 @@ CREATE TABLE posts (
     body text NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    channel_id integer NOT NULL,
+    tag_id integer,
     title character varying NOT NULL,
     slug character varying NOT NULL,
     likes integer DEFAULT 1 NOT NULL,
@@ -164,7 +181,7 @@ CREATE VIEW hot_posts AS
             posts.body,
             posts.created_at,
             posts.updated_at,
-            posts.channel_id,
+            posts.tag_id,
             posts.title,
             posts.slug,
             posts.likes,
@@ -180,7 +197,7 @@ CREATE VIEW hot_posts AS
     posts_with_age.body,
     posts_with_age.created_at,
     posts_with_age.updated_at,
-    posts_with_age.channel_id,
+    posts_with_age.tag_id,
     posts_with_age.title,
     posts_with_age.slug,
     posts_with_age.likes,
@@ -330,6 +347,14 @@ ALTER TABLE ONLY posts
 
 
 --
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
 -- Name: posts unique_slug; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -352,10 +377,17 @@ CREATE INDEX index_authem_sessions_subject ON authem_sessions USING btree (expir
 
 
 --
--- Name: index_posts_on_channel_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_channels_on_parent_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_posts_on_channel_id ON posts USING btree (channel_id);
+CREATE INDEX index_channels_on_parent_id ON channels USING btree (parent_id);
+
+
+--
+-- Name: index_channels_posts_on_channel_id_and_post_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_channels_posts_on_channel_id_and_post_id ON channels_posts USING btree (channel_id, post_id);
 
 
 --
@@ -366,26 +398,18 @@ CREATE INDEX index_posts_on_developer_id ON posts USING btree (developer_id);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
+-- Name: index_posts_on_tag_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
-
-
---
--- Name: posts fk_rails_447dc2e0a3; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY posts
-    ADD CONSTRAINT fk_rails_447dc2e0a3 FOREIGN KEY (channel_id) REFERENCES channels(id);
+CREATE INDEX index_posts_on_tag_id ON posts USING btree (tag_id);
 
 
 --
--- Name: posts fk_rails_b3ec63b3ac; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: posts fk_rails_2c578d8f8f; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY posts
-    ADD CONSTRAINT fk_rails_b3ec63b3ac FOREIGN KEY (developer_id) REFERENCES developers(id);
+    ADD CONSTRAINT fk_rails_2c578d8f8f FOREIGN KEY (developer_id) REFERENCES developers(id);
 
 
 --
@@ -410,7 +434,6 @@ INSERT INTO schema_migrations (version) VALUES
 ('20150529183728'),
 ('20150529190009'),
 ('20150529190148'),
-('20150601191337'),
 ('20150603155844'),
 ('20150610141445'),
 ('20150610145829'),
@@ -426,9 +449,14 @@ INSERT INTO schema_migrations (version) VALUES
 ('20160211043316'),
 ('20160223002123'),
 ('20160622144602'),
-('20160622152349'),
-('20160622154534'),
 ('20160701161129'),
-('20160708201736');
+('20160708201736'),
+('20170204204251'),
+('20170209031639'),
+('20170209125924'),
+('20170211124000'),
+('20170211124750'),
+('20170211190651'),
+('20170213234544');
 
 

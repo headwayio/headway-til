@@ -12,7 +12,7 @@ class DevelopersController < ApplicationController
   private
 
   def posts
-    @posts ||= developer.posts.published_and_ordered.includes(:channel)
+    @posts ||= developer.posts.published_and_ordered.includes(:channels)
   end
 
   def developer

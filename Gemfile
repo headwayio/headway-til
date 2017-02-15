@@ -22,6 +22,8 @@ gem 'rouge'
 gem 'scenic', '~> 1.3'
 gem 'sucker_punch', '~> 2.0'
 gem 'twitter'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 
 group :development do
   gem 'brakeman', require: false
@@ -31,7 +33,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'factory_girl_rails'
+  gem "factory_girl_rails", "~> 4.0"
   gem 'figaro'
   gem 'pry-rails'
   gem 'pry-byebug'

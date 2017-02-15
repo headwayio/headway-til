@@ -1,0 +1,8 @@
+- content_for :page_title, "#{category} Posts"
+%section.o-layout.o-layout--center
+  .o-layout__item.u-1x3
+    %h1.u-text-center= category.upcase
+  .o-layout__item.u-2x3
+    - if posts.empty?
+      %h4= t('.empty_list_html', category: category.upcase)
+    = render partial: 'posts/post_simple', collection: posts, as: :post

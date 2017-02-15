@@ -1,5 +1,8 @@
 class Developer < ApplicationRecord
   has_many :posts
+
+  mount_uploader :avatar, AvatarUploader
+
   validates :email, presence: true, format: { with: Proc.new { /\A(.+@(#{ENV['permitted_domains']})|(#{ENV['permitted_emails']}))\z/ } }
   validates :username, presence: true, uniqueness: true, format: { with: /\A[A-Za-z0-9]+\Z/ }
   validates :twitter_handle, length: { maximum: 15 }, format: { with: /\A(?=.*[a-z])[a-z_\d]+\Z/i }, allow_blank: true
@@ -31,5 +34,9 @@ class Developer < ApplicationRecord
 
   def slack_display_name
     slack_name || username
+  end
+
+  def full_name
+    [first_name, last_name].compact.join(' ')
   end
 end
