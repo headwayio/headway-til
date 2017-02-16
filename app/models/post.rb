@@ -76,6 +76,14 @@ class Post < ApplicationRecord
     !published?
   end
 
+  def related_to_design?
+    channels.merge(Channel.design).exists?
+  end
+
+  def related_to_development?
+    channels.merge(Channel.development).exists?
+  end
+
   private
 
   def likes_threshold?
