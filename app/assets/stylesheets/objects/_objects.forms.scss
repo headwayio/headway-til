@@ -1,0 +1,22 @@
+.o-form-group {
+  display: block;
+  width: 100%;
+  margin: inuit-rem($unit) 0;
+
+  .o-form-group__label {
+    display: block;
+  }
+
+  .o-form-group__input {
+    display: block;
+
+    input, textarea, select {
+      width: 100%;
+      padding: inuit-rem($unit-tiny);
+    }
+
+    textarea {
+      height: inuit-rem(5 * $unit)
+    }
+  }
+}
