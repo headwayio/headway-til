@@ -10,7 +10,7 @@ module HrTil
     config.autoload_paths << Rails.root.join('lib')
     config.time_zone = 'Eastern Time (US & Canada)'
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'views', '**', '*.{rb,yml}')]
-
+    config.assets.paths = [Rails.root.join('app', 'assets', 'images')]
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do

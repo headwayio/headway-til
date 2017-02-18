@@ -3,17 +3,17 @@
   %head
     %title= [content_for(:page_title), SITE_NAME].compact.join(' - ').html_safe
     %link(href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600|Work+Sans:300,400,700" rel="stylesheet")
-    = stylesheet_link_tag    fingerprinted_asset('application'), media: 'all'
-    = javascript_include_tag fingerprinted_asset('application')
+    = stylesheet_link_tag    f('application'), media: 'all'
+    = javascript_include_tag f('application')
     = csrf_meta_tags
     %meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1")
-    = favicon_link_tag 'favicon.png'
+    = favicon_link_tag 'favicon.ico'
   %body.o-background.o-background--gradient
     %h1.o-background.o-background--type= t('app.name_html')
     .o-wrapper
       .o-wrapper--main.o-layout.o-layout--center.u-padding-top
         .o-layout__item.u-1x1.u-margin-bottom-large
-          .u-text-center= link_to(image_tag('headway-logo-mark-white.svg', size: '50x50'), root_path)
+          .u-text-center= link_to(image_tag('headway-logo-mark-white.svg', alt: 'Headway', size: '50x50'), root_path)
           %nav.nav-masthead
             .o-pack
               .o-pack__item= link_to('All', category_path(category: 'all'))

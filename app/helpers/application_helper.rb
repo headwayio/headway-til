@@ -2,6 +2,7 @@ module ApplicationHelper
   def fingerprinted_asset(name)
     Rails.env.production? ? "#{name}-#{ASSET_FINGERPRINT}" : name
   end
+  alias_method :f, :fingerprinted_asset
 
   def render_post_channels(post)
     capture do
