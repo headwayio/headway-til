@@ -1,0 +1,6 @@
+en:
+  channels:
+    development:
+      name: Development
+    design:
+      name: Design

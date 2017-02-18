@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   resource :profile, controller: 'developers', only: %i(update edit)
   resources :developers, path: '/authors', only: 'show'
 
+  # Matches /posts/{all,development,design}
+  get '/posts/:category',
+      to: 'categories#show',
+      as: :category,
+      constraints: CategoryConstraint
+
   resources :posts, except: :destroy, param: :titled_slug
   resources :statistics, only: :index
 
@@ -23,6 +29,7 @@ Rails.application.routes.draw do
   get '/posts_drafts', to: 'posts#drafts', as: :drafts
 
   resources :channels, path: '/', only: :show
+
   post '/post_preview', to: 'posts#preview'
 
   get '/posts/:titled_slug.md', to: 'posts#show', as: 'post_text'

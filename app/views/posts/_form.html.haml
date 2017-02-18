@@ -1,32 +1,31 @@
-= form_for @post do |f|
-  %dl
-    %dt
+= form_for post do |f|
+  .o-form-group
+    .o-form-group__label
       = f.label :title
+    .o-form-group__input
       = f.error_message_on :title
       %small.character_limit(data-limit="#{Post::MAX_TITLE_CHARS}")
-    %dd= f.text_field :title, placeholder: 'Enter title...'
-    %dt
+      = f.text_field :title, placeholder: 'Enter title...'
+  .o-form-group
+    .o-form-group__label
       = f.label :body
+    .o-form-group__input
       = f.error_message_on :body
       %small.word_limit(data-limit="#{Post::MAX_WORDS}")
-    %dd
       #editor
       = f.text_area :body, placeholder: 'Enter body...', class: 'autosize'
-
-    %dt
+  .o-form-group
+    .o-form-group__label
       = f.label :channel_id
-      = f.error_message_on :channel_id
-    %dd= f.collection_select :channel_id, sorted_channels, :id, :name, include_blank: ""
+    .o-form-group__input
+      = f.error_message_on :channel_ids
+      = f.collection_select :channel_ids, sorted_channels, :id, :name, include_blank: ""
+  .o-form-group.o-form-group--inline
+    .o-form-group__label
     - if @post.publishable?
       %label.checkbox
         = check_box_tag :published, "true", false
         = label_tag :published, 'Publish this post'
-  %fieldset.actions
+  .o-form-group.o-form-group--actions
     = f.submit 'Submit'
     = link_to 'cancel', root_path
-
-%script{src: '/assets/javascripts/ace-builds/ace.js'}
-
-:javascript
-  var TIL = TIL || {}
-  TIL.editor = "#{current_developer.editor}";

@@ -1,0 +1,42 @@
+.o-background {
+  background-repeat: no-repeat;
+  background-position: top center;
+
+  &.o-background--gradient {
+    background-size: cover;
+    background: linear-gradient(134.72deg, #5F50ED 0%, #0C176B 100%);
+  }
+
+  &.o-background--paper {
+    padding: $unit;
+    background-color: $white;
+    border-radius: $global-radius;
+    color: $black;
+    box-shadow: 0 11px 24px 0 rgba(0,0,0,0.5);
+  }
+
+  &.o-background--type {
+    position: fixed;
+    z-index: depth(background);
+    top: inuit-rem(-50px);
+    left: inuit-rem(-6px);
+    opacity: 0.1;
+    font-family: $sans-heading;
+    font-weight: $sans-heading-medium;
+    color: $black;
+    text-transform: uppercase;
+    @include inuit-font-size(72px);
+
+    @include mq($from: tablet) {
+      top: inuit-rem(-110px);
+      left: inuit-rem(-12px);
+      @include inuit-font-size(180px);
+    }
+
+    @include mq($from: desktop) {
+      top: inuit-rem(-130px);
+      left: inuit-rem(-12px);
+      @include inuit-font-size(240px);
+    }
+  }
+}

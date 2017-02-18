@@ -20,4 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  app:
+    name: Today I Learned
+    name_html: 'Today<br>I Learned'
+  time:
+    formats:
+      short: '%B %-e, %Y'

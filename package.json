@@ -1,0 +1,29 @@
+{
+  "scripts": {
+    "build": "webpack -wc --config webpack.config.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^4.0.0",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0"
+  },
+  "name": "headway-til",
+  "version": "1.0.0",
+  "description": "Today I Learned",
+  "main": "app/assets/javascripts/main.js",
+  "repository": "git@github.com:headwayio/headway-til.git",
+  "author": "Tim Gremore <tim@headway.io>",
+  "license": "MIT",
+  "dependencies": {
+    "inuitcss": "^6.0.0-beta.4",
+    "raw-loader": "^0.5.1",
+    "sass-mq": "^3.3.2"
+  }
+}

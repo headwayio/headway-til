@@ -8,6 +8,6 @@ class ChannelsController < ApplicationController
   end
 
   def posts
-    @posts ||= channel.posts.published_and_ordered.includes(:developer)
+    @posts ||= channel.child_posts.published_and_ordered.includes(:developer)
   end
 end

@@ -1,0 +1,15 @@
+.o-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .o-grid__item {
+    width: 33%;
+    padding: 0 inuit-rem($unit-small);
+  }
+
+  &.o-grid--large > .o-grid__item {
+    margin-bottom: $unit-large;
+  }
+}
+
