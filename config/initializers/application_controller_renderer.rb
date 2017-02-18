@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
 ApplicationController.renderer.defaults.merge!(
-  http_host: ENV['host'],
-  https: ENV['protocol'].include?('https')
+  http_host: ENV.fetch('host', 'https://headway.io'),
+  https: ENV.fetch('protocol', 'https').include?('https')
 )

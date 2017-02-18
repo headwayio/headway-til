@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  default_url_options host: ENV.fetch('host'), protocol: ENV.fetch('protocol')
+  default_url_options host: ENV.fetch('host', 'https://headway.io'),
+                      protocol: ENV.fetch('protocol', 'https')
 
   get 'ui(/:action)', controller: 'ui' unless Rails.env.production?
 
