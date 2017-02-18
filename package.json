@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "webpack -wc --config webpack.config.js",
-    "build-production": "webpack -wc -p --config webpack.config.js"
+    "release": "webpack -c -p --config webpack.config.js"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
