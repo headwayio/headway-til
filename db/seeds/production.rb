@@ -60,13 +60,9 @@ end
 puts " ...done."
 
 content = <<str
-#{Phil.words(100).capitalize}
-
 ```ruby
 'Let’s make Headway!'.split(/\\s+/).join(tag(:br))
 ```
-
-#{Phil.words(50).capitalize}
 str
 
 posts = [
@@ -74,54 +70,6 @@ posts = [
     title: 'Breakup Lines with SplitJoin',
     developer: Developer.find_by(username: 'eric'),
     body: content,
-    likes: rand(1..20),
-    created_at: rand(30).days.ago,
-    published_at: rand(30).days.ago
-  },
-  {
-    title: 'Components in Components',
-    developer: Developer.find_by(username: 'noah'),
-    body: Phil.words(100).capitalize,
-    likes: rand(1..20),
-    created_at: rand(30).days.ago,
-    published_at: rand(30).days.ago
-  },
-  {
-    title: 'Importing accurate data through JSON',
-    developer: Developer.find_by(username: 'andrew'),
-    body: Phil.words(100).capitalize,
-    likes: rand(1..20),
-    created_at: rand(30).days.ago,
-    published_at: rand(30).days.ago
-  },
-  {
-    title: 'Remapping key shortcuts',
-    developer: Developer.find_by(username: 'jon'),
-    body: Phil.words(100).capitalize,
-    likes: rand(1..20),
-    created_at: rand(30).days.ago,
-    published_at: rand(30).days.ago
-  },
-  {
-    title: 'Inheriting link hrefs in javascript',
-    developer: Developer.find_by(username: 'eric'),
-    body: Phil.words(100).capitalize,
-    likes: rand(1..20),
-    created_at: rand(30).days.ago,
-    published_at: rand(30).days.ago
-  },
-  {
-    title: 'Request consolidation',
-    developer: Developer.find_by(username: 'tommy'),
-    body: Phil.words(100).capitalize,
-    likes: rand(1..20),
-    created_at: rand(30).days.ago,
-    published_at: rand(30).days.ago
-  },
-  {
-    title: 'An Elixir to soothe your pain',
-    developer: Developer.find_by(username: 'tim'),
-    body: Phil.words(100).capitalize,
     likes: rand(1..20),
     created_at: rand(30).days.ago,
     published_at: rand(30).days.ago
