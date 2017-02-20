@@ -24,6 +24,7 @@ gem 'sucker_punch', '~> 2.0'
 gem 'twitter'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
+gem 'fog-aws'
 
 group :development do
   gem 'brakeman', require: false
